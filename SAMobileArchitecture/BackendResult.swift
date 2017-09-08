@@ -1,5 +1,5 @@
 //
-//  MainController.swift
+//  BackendResult.swift
 //  SAMobileArchitecture
 //
 //  Created by Gabriel Coman on 08/09/2017.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-class MainController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+enum BackendResult: Result {
+    case success(data: [BackendModel])
+    case error
 }

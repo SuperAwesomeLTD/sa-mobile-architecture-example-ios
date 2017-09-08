@@ -7,19 +7,31 @@
 //
 
 import UIKit
+import RxSwift
 
 class IntroController: UIViewController {
 
+    let bag = DisposeBag()
+    let presenter = IntroPresenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let uiEvents: Observable<NavigationEvent> = Observable.just(NavigationEvent(segue: "IntroToMain"))
+        
+        presenter.observe(stateForEvents: uiEvents)
+            .subscribe(onNext: handle)
+            .addDisposableTo(bag)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func handle(state st: IntroState) {
+        switch st {
+        case .initial:
+            break
+        case .goto(let segue):
+            self.performSegue(withIdentifier: segue, sender: segue)
+            break
+        }
     }
-
-
 }
 

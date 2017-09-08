@@ -1,5 +1,5 @@
 //
-//  MainController.swift
+//  Task.swift
 //  SAMobileArchitecture
 //
 //  Created by Gabriel Coman on 08/09/2017.
@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RxSwift
 
-class MainController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class Task <Input, Output> {
+    
+    func execute(input: Input) -> Observable<Output> {
+        return Observable.empty()
     }
 }
