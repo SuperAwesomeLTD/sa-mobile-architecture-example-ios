@@ -66,10 +66,10 @@ Architecture</string>
             </objects>
             <point key="canvasLocation" x="-610" y="139"/>
         </scene>
-        <!--Main Controller-->
+        <!--Main-->
         <scene sceneID="zqF-p8-W5p">
             <objects>
-                <viewController id="nEw-0H-9hE" customClass="MainController" customModule="SAMobileArchitecture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="nEw-0H-9hE" customClass="MainController" customModule="SAMobileArchitecture" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t49-uH-ppX"/>
                         <viewControllerLayoutGuide type="bottom" id="3m2-Pq-xXi"/>
@@ -78,12 +78,12 @@ Architecture</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="knl-eC-jiQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="140" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="knl-eC-jiQ">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
-                                <color key="backgroundColor" red="0.89411764709999997" green="0.8980392157" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemCellId" rowHeight="140" id="F4q-Fu-RLV" customClass="ItemCell" customModule="SAMobileArchitecture" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F4q-Fu-RLV" id="sjl-NV-Cpq">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
@@ -145,18 +145,27 @@ Architecture</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="knl-eC-jiQ" firstAttribute="leading" secondItem="WNP-eP-XQY" secondAttribute="leading" id="35u-UE-h5K"/>
+                            <constraint firstAttribute="trailing" secondItem="knl-eC-jiQ" secondAttribute="trailing" id="5M6-1o-m0q"/>
+                            <constraint firstItem="3m2-Pq-xXi" firstAttribute="top" secondItem="knl-eC-jiQ" secondAttribute="bottom" id="7XA-EE-ki5"/>
                             <constraint firstAttribute="trailing" secondItem="Cnh-xr-3zY" secondAttribute="trailing" id="A4P-RZ-975"/>
                             <constraint firstItem="Cnh-xr-3zY" firstAttribute="leading" secondItem="WNP-eP-XQY" secondAttribute="leading" id="JRr-R2-mHn"/>
-                            <constraint firstItem="3m2-Pq-xXi" firstAttribute="top" secondItem="knl-eC-jiQ" secondAttribute="bottom" id="VkV-aO-Zcl"/>
-                            <constraint firstItem="knl-eC-jiQ" firstAttribute="top" secondItem="Cnh-xr-3zY" secondAttribute="bottom" id="c3P-up-bus"/>
                             <constraint firstItem="Cnh-xr-3zY" firstAttribute="top" secondItem="t49-uH-ppX" secondAttribute="bottom" id="e0K-rM-Nd8"/>
+                            <constraint firstItem="knl-eC-jiQ" firstAttribute="top" secondItem="Cnh-xr-3zY" secondAttribute="bottom" id="hvi-vO-T3j"/>
+                            <constraint firstItem="knl-eC-jiQ" firstAttribute="leading" secondItem="WNP-eP-XQY" secondAttribute="leading" id="iU6-zg-kv7"/>
                             <constraint firstAttribute="trailing" secondItem="Cnh-xr-3zY" secondAttribute="trailing" id="lPf-bd-ZUK"/>
                             <constraint firstAttribute="trailing" secondItem="knl-eC-jiQ" secondAttribute="trailing" id="rgc-Wp-Wnw"/>
                             <constraint firstItem="Cnh-xr-3zY" firstAttribute="leading" secondItem="WNP-eP-XQY" secondAttribute="leading" id="vQp-OB-UnX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Main" id="1p0-Hg-wYz">
+                        <barButtonItem key="rightBarButtonItem" title="Favourites" id="8gd-X3-n1Z">
+                            <connections>
+                                <segue destination="wu1-jX-abu" kind="show" identifier="MainToFavourites" id="wHt-h4-Xgw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="wu1-jX-abu" kind="show" identifier="MainToFavourites" id="Uu9-J4-jgg"/>
+                        <outlet property="table" destination="knl-eC-jiQ" id="hsz-6L-jSw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zXs-vY-1ii" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,7 +175,7 @@ Architecture</string>
         <!--Favourites Controller-->
         <scene sceneID="DmV-Px-x4r">
             <objects>
-                <viewController id="wu1-jX-abu" customClass="FavouritesController" customModule="SAMobileArchitecture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wu1-jX-abu" customClass="FavouritesController" customModule="SAMobileArchitecture" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZJD-4X-fvi"/>
                         <viewControllerLayoutGuide type="bottom" id="dis-6j-ALu"/>

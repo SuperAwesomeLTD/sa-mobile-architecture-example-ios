@@ -7,9 +7,48 @@
 //
 
 import UIKit
+import RxSwift
 
-class MainPresenter: Presenter <Event, MainState, Result> {
+class MainPresenter/*: Presenter <Event, MainState, Result>*/ {
 
+    var transformer: ComposeTransformer<Event, Result> {
+        return { observable -> Observable<Result> in
+            return observable
+                .flatMap { event -> Observable<[BackendModel]> in
+                    return BackendTask().execute(input: "").toArray()
+                }
+                .map { models -> BackendResult in
+                    return BackendResult.success(data: models)
+                }
+                .catchErrorJustReturn(BackendResult.error)
+                .startWith(BackendResult.loading)
+        }
+    }
     
+    /*override*/ var initialState: MainState {
+        return MainState.initial
+    }
+    
+    func observe(stateForEvents events: Observable<Event>) -> Observable<MainState> {
+        return events
+            .compose(transformer)
+            .scan(initialState, accumulator: reducer)
+            .startWith(initialState)
+    }
+    
+    func reducer(_ previous: MainState, _ result: Result) -> MainState {
+        if let result = result as? BackendResult {
+            switch result {
+            case .loading:
+                return MainState.loading
+            case .success(let data):
+                return MainState.success(data: data)
+            case .error:
+                return MainState.error
+            }
+        } else {
+            return previous
+        }
+    }
     
 }

@@ -9,9 +9,9 @@
 import UIKit
 import RxSwift
 
-class IntroPresenter: Presenter<NavigationEvent, IntroState, NavigationResult> {
+class IntroPresenter/*: Presenter<NavigationEvent, IntroState, NavigationResult>*/ {
 
-    override var transformer: ComposeTransformer<NavigationEvent, NavigationResult> {
+    /*override*/ var transformer: ComposeTransformer<NavigationEvent, NavigationResult> {
         return { observable -> Observable<NavigationResult> in
             return observable.map { event -> NavigationResult in
                 return NavigationResult.goto(segue: event.segue)
@@ -19,11 +19,18 @@ class IntroPresenter: Presenter<NavigationEvent, IntroState, NavigationResult> {
         }
     }
     
-    override var initialState: IntroState {
+    /*override*/ var initialState: IntroState {
         return IntroState.initial
     }
     
-    override func reducer(_ previous: IntroState, _ result: NavigationResult) -> IntroState {
+    func observe(stateForEvents events: Observable<NavigationEvent>) -> Observable<IntroState> {
+        return events
+            .compose(transformer)
+            .scan(initialState, accumulator: reducer)
+            .startWith(initialState)
+    }
+    
+    /*override*/ func reducer(_ previous: IntroState, _ result: NavigationResult) -> IntroState {
         switch result {
         case .goto(let segue):
             return IntroState.goto(segue: segue)

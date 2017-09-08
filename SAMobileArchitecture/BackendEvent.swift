@@ -8,6 +8,6 @@
 
 import UIKit
 
-class BackendEvebt: Event {
+class BackendEvent: Event {
     // do nothing
 }

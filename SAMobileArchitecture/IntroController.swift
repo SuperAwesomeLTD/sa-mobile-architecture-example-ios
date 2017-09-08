@@ -25,6 +25,7 @@ class IntroController: UIViewController {
     }
     
     private func handle(state st: IntroState) {
+        print("Intro state :: \(st)")
         switch st {
         case .initial:
             break

@@ -9,7 +9,7 @@
 import UIKit
 
 enum MainState: State {
-    case initital
+    case initial
     case loading
     case success(data: [BackendModel])
     case error

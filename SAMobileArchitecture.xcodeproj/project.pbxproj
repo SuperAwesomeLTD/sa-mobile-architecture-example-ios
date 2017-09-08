@@ -12,7 +12,8 @@
 		1BC33DAC1F62CF24007B7ECF /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DAB1F62CF24007B7ECF /* MainState.swift */; };
 		1BC33DAE1F62CF48007B7ECF /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DAD1F62CF48007B7ECF /* MainPresenter.swift */; };
 		1BC33DB01F62CF68007B7ECF /* BackendResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DAF1F62CF68007B7ECF /* BackendResult.swift */; };
-		1BC33DB21F62CF97007B7ECF /* BackendEvebt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DB11F62CF97007B7ECF /* BackendEvebt.swift */; };
+		1BC33DB21F62CF97007B7ECF /* BackendEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DB11F62CF97007B7ECF /* BackendEvent.swift */; };
+		1BC33DB41F62EB61007B7ECF /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DB31F62EB61007B7ECF /* MainDataSource.swift */; };
 		1BEB21C01F62BE5D00517EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB21BF1F62BE5D00517EFC /* AppDelegate.swift */; };
 		1BEB21C21F62BE5D00517EFC /* IntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB21C11F62BE5D00517EFC /* IntroController.swift */; };
 		1BEB21C51F62BE5D00517EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BEB21C31F62BE5D00517EFC /* Main.storyboard */; };
@@ -42,7 +43,8 @@
 		1BC33DAB1F62CF24007B7ECF /* MainState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
 		1BC33DAD1F62CF48007B7ECF /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		1BC33DAF1F62CF68007B7ECF /* BackendResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendResult.swift; sourceTree = "<group>"; };
-		1BC33DB11F62CF97007B7ECF /* BackendEvebt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendEvebt.swift; sourceTree = "<group>"; };
+		1BC33DB11F62CF97007B7ECF /* BackendEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendEvent.swift; sourceTree = "<group>"; };
+		1BC33DB31F62EB61007B7ECF /* MainDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
 		1BEB21BC1F62BE5D00517EFC /* SAMobileArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SAMobileArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BEB21BF1F62BE5D00517EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BEB21C11F62BE5D00517EFC /* IntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,13 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		1BC33DB51F62EDE1007B7ECF /* NavigationItem */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NavigationItem;
+			sourceTree = "<group>";
+		};
 		1BEB21B31F62BE5D00517EFC = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +157,7 @@
 		1BEB21D11F62BED000517EFC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1BC33DB51F62EDE1007B7ECF /* NavigationItem */,
 				1BEB21D41F62BEFF00517EFC /* Intro */,
 				1BEB21D51F62BF0400517EFC /* Main */,
 				1BEB21DB1F62C0F600517EFC /* ItemCell */,
@@ -192,6 +202,7 @@
 				1BC33DAB1F62CF24007B7ECF /* MainState.swift */,
 				1BEB21D61F62BF1000517EFC /* MainController.swift */,
 				1BC33DAD1F62CF48007B7ECF /* MainPresenter.swift */,
+				1BC33DB31F62EB61007B7ECF /* MainDataSource.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -235,7 +246,7 @@
 			children = (
 				1BEB21F51F62C4A900517EFC /* State.swift */,
 				1BEB21E71F62C2E600517EFC /* Event.swift */,
-				1BC33DB11F62CF97007B7ECF /* BackendEvebt.swift */,
+				1BC33DB11F62CF97007B7ECF /* BackendEvent.swift */,
 				1BEB21E91F62C2F600517EFC /* NavigationEvent.swift */,
 				1BEB21F31F62C46E00517EFC /* Result.swift */,
 				1BEB21F71F62C55400517EFC /* NavigationResult.swift */,
@@ -400,8 +411,9 @@
 				1BEB21D71F62BF1000517EFC /* MainController.swift in Sources */,
 				1BEB21C01F62BE5D00517EFC /* AppDelegate.swift in Sources */,
 				1BC33DAE1F62CF48007B7ECF /* MainPresenter.swift in Sources */,
-				1BC33DB21F62CF97007B7ECF /* BackendEvebt.swift in Sources */,
+				1BC33DB21F62CF97007B7ECF /* BackendEvent.swift in Sources */,
 				1BEB21EC1F62C38500517EFC /* IntroPresenter.swift in Sources */,
+				1BC33DB41F62EB61007B7ECF /* MainDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

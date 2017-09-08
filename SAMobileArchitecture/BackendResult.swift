@@ -9,6 +9,7 @@
 import UIKit
 
 enum BackendResult: Result {
+    case loading
     case success(data: [BackendModel])
     case error
 }
