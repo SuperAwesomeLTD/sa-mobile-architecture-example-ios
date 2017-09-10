@@ -14,7 +14,7 @@ class MainController: UIViewController {
     @IBOutlet weak var table: UITableView!
     
     let bag = DisposeBag()
-    let dataSource = MainDataSource()
+    let viewModel = MainViewModel()
     let presenter = MainPresenter()
     
     override func viewDidLoad() {
@@ -31,13 +31,13 @@ class MainController: UIViewController {
         print("Main state :: \(st)")
         switch st {
         case .initial:
-            table.dataSource = dataSource
-            table.delegate = dataSource
+            table.dataSource = viewModel
+            table.delegate = viewModel
             break
         case .loading:
             break
         case .success(let data):
-            dataSource.update(data)
+            viewModel.update(data)
             break
         case .error:
             break

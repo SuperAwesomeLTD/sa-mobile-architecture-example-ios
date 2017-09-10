@@ -1,5 +1,5 @@
 //
-//  BackendEvebt.swift
+//  ItemCellState.swift
 //  SAMobileArchitecture
 //
 //  Created by Gabriel Coman on 08/09/2017.
@@ -8,6 +8,7 @@
 
 import UIKit
 
-struct BackendEvent: Event {
-    // do nothing
+enum ItemCellState: State {
+    case initial
+    case changed
 }

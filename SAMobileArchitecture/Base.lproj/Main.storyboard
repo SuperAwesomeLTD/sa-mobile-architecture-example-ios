@@ -131,6 +131,12 @@ Architecture</string>
                                                 <constraint firstItem="fO7-j3-zJe" firstAttribute="leading" secondItem="sjl-NV-Cpq" secondAttribute="leading" constant="8" id="mY3-zk-Jsv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="add" destination="Ycf-nT-7oH" id="2zW-lE-yXp"/>
+                                            <outlet property="icon" destination="fO7-j3-zJe" id="548-QM-tBZ"/>
+                                            <outlet property="like" destination="leJ-7n-y1c" id="2Po-xO-hJK"/>
+                                            <outlet property="name" destination="pgW-LV-1XR" id="cl3-md-Fny"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

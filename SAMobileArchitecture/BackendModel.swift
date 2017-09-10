@@ -8,9 +8,16 @@
 
 import UIKit
 
-struct BackendModel {
+class BackendModel {
     var bgColor: UIColor
     var text: String
     var isFavourite: Bool
     var isLiked: Bool
+    
+    init(bgColor: UIColor, text: String, isFavourite: Bool, isLiked: Bool) {
+        self.bgColor = bgColor
+        self.text = text
+        self.isFavourite = isFavourite
+        self.isLiked = isLiked
+    }
 }
