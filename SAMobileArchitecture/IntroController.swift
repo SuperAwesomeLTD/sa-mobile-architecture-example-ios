@@ -7,21 +7,32 @@
 //
 
 import UIKit
-import RxSwift
 
 class IntroController: UIViewController {
 
-    let bag = DisposeBag()
-    let presenter = IntroPresenter()
+    var store: Store<IntroState>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let uiEvents: Observable<NavigationEvent> = Observable.just(NavigationEvent(segue: "IntroToMain"))
-        
-        presenter.observe(stateForEvents: uiEvents)
-            .subscribe(onNext: handle)
-            .addDisposableTo(bag)
+        store = Store<IntroState>(state: IntroState.initial, reducer: reducer)
+        store.listen(forNewState: handle)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        store.dispatch(NavigationEvent.goto(segue: "IntroToMain"))
+    }
+    
+    private func reducer(_ previous: IntroState, _ event: Event) -> IntroState {
+        if let event = event as? NavigationEvent {
+            switch event {
+            case .goto(let segue):
+                return IntroState.goto(segue: segue)
+            }
+        } else {
+            return previous
+        }
     }
     
     private func handle(state st: IntroState) {

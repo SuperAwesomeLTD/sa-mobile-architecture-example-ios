@@ -11,3 +11,17 @@ import UIKit
 protocol Event {
     // do nothing
 }
+
+enum BackendEvent: Event {
+    case loading
+    case success(data: [BackendModel])
+    case error
+}
+
+enum NavigationEvent: Event {
+    case goto(segue: String)
+}
+
+enum ItemCellEvent: Event {
+    case changed(model: BackendModel)
+}

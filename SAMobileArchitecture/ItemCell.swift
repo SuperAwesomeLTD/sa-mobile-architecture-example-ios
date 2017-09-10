@@ -19,9 +19,7 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var like: UIButton!
     @IBOutlet weak var add: UIButton!
     
-    var bag = DisposeBag()
-    var disposable: Disposable!
-    var presenter = ItemCellPresenter()
+    var store: Store<ItemCellState>?
     
     var viewModel: ItemCellViewModel! {
         didSet {
@@ -30,21 +28,21 @@ class ItemCell: UITableViewCell {
             like.backgroundColor = viewModel.likeBgColor
             add.backgroundColor = viewModel.favBgColor
             
-            let likeEvents: Observable<ItemCellEvent> = like.rx.tap.asObservable().map { res -> ItemCellLikeEvent in
-                return ItemCellLikeEvent(self.viewModel.model)
-            }
-            let addEvents: Observable<ItemCellEvent> = add.rx.tap.asObservable().map { res -> ItemCellFavEvent in
-                return ItemCellFavEvent(self.viewModel.model)
-            }
-            let uiEvents = Observable.merge([likeEvents, addEvents])
-            
-            disposable = presenter.observe(stateForEvents: uiEvents).subscribe(onNext: self.handle)
-            disposable.addDisposableTo(bag)
+            store = Store<ItemCellState>(state: ItemCellState.initial, reducer: reducer)
+            store?.listen(forNewState: handle)
         }
     }
     
     override func prepareForReuse() {
-        disposable.dispose()
+        store = nil
+    }
+    
+    func reducer(_ previous: ItemCellState, _ event: Event) -> ItemCellState {
+        if event is ItemCellEvent {
+            return ItemCellState.changed
+        } else {
+            return previous
+        }
     }
     
     func handle(state st: ItemCellState) {
@@ -54,5 +52,15 @@ class ItemCell: UITableViewCell {
             add.backgroundColor = viewModel.favBgColor
             break
         }
+    }
+    
+    @IBAction func likeAction(_ sender: Any) {
+        viewModel.model.isLiked = !viewModel.model.isLiked
+        store?.dispatch(ItemCellEvent.changed(model: viewModel.model))
+    }
+    
+    @IBAction func addAction(_ sender: Any) {
+        viewModel.model.isFavourite = !viewModel.model.isFavourite
+        store?.dispatch(ItemCellEvent.changed(model: viewModel.model))
     }
 }

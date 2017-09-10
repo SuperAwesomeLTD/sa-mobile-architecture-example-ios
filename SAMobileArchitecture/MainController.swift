@@ -13,18 +13,44 @@ class MainController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     
+    var store: Store<MainState>!
+    
     let bag = DisposeBag()
     let viewModel = MainViewModel()
-    let presenter = MainPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let uiEvents: Observable<Event> = Observable.just(BackendEvent())
+        store = Store<MainState>(state: MainState.initial, reducer: reducer)
+        store.listen(forNewState: handle)
         
-        presenter.observe(stateForEvents: uiEvents)
-            .subscribe(onNext: handle)
+        let task = BackendTask()
+        task.execute(input: "")
+            .toArray()
+            .map { elements -> BackendEvent in
+                return BackendEvent.success(data: elements)
+            }
+            .catchErrorJustReturn(BackendEvent.error)
+            .startWith(BackendEvent.loading)
+            .subscribe(onNext: { event in
+                self.store.dispatch(event)
+            })
             .addDisposableTo(bag)
+    }
+    
+    func reducer(_ previous: MainState, _ event: Event) -> MainState {
+        if let event = event as? BackendEvent {
+            switch event {
+            case .loading:
+                return MainState.loading
+            case .success(let data):
+                return MainState.success(data: data)
+            case .error:
+                return MainState.error
+            }
+        } else {
+            return previous
+        }
     }
     
     func handle(state st: MainState) {
