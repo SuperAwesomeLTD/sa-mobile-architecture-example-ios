@@ -21,37 +21,10 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        store = Store<MainState>(state: MainState.initial, reducer: reducer)
+        store = Store<MainState>(state: MainState.initial, reducer: mainReducer)
         store.listen(forNewState: handle)
         
         store.dispatch(loadDataFromBackEndAction)
-    }
-    
-    func loadDataFromBackEndAction () -> Observable<Event> {
-        return BackendTask().execute(input: "")
-            .toArray()
-            .map { elements -> LoadBackendDataEvent in
-                return LoadBackendDataEvent(data: elements, isLoading: false)
-            }
-            .catchErrorJustReturn(LoadBackendDataEvent(data: nil, isLoading: false))
-            .startWith(LoadBackendDataEvent(data: nil, isLoading: true))
-    }
-    
-    func reducer(_ previous: MainState, _ event: Event) -> MainState {
-        
-        if let event = event as? LoadBackendDataEvent {
-            
-            if let data = event.data {
-                return MainState.success(data: data)
-            } else if event.isLoading {
-                return MainState.loading
-            } else {
-                return MainState.error
-            }
-            
-        } else {
-            return previous
-        }
     }
     
     func handle(state st: MainState) {

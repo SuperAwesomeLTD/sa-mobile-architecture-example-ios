@@ -14,6 +14,9 @@
 		1BC33DB91F62F0C0007B7ECF /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DB81F62F0C0007B7ECF /* ItemCellViewModel.swift */; };
 		1BC33DBB1F62F1AE007B7ECF /* ItemCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DBA1F62F1AE007B7ECF /* ItemCellState.swift */; };
 		1BC33DF61F656BC7007B7ECF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DF51F656BC7007B7ECF /* Store.swift */; };
+		1BC33E311F67DF2F007B7ECF /* loadDataFromBackEndAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33E301F67DF2F007B7ECF /* loadDataFromBackEndAction.swift */; };
+		1BC33E341F67DF53007B7ECF /* MainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33E331F67DF53007B7ECF /* MainReducer.swift */; };
+		1BC33E361F67DF94007B7ECF /* ItemCellReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33E351F67DF94007B7ECF /* ItemCellReducer.swift */; };
 		1BEB21C01F62BE5D00517EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB21BF1F62BE5D00517EFC /* AppDelegate.swift */; };
 		1BEB21C21F62BE5D00517EFC /* IntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB21C11F62BE5D00517EFC /* IntroController.swift */; };
 		1BEB21C51F62BE5D00517EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BEB21C31F62BE5D00517EFC /* Main.storyboard */; };
@@ -39,6 +42,9 @@
 		1BC33DB81F62F0C0007B7ECF /* ItemCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		1BC33DBA1F62F1AE007B7ECF /* ItemCellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellState.swift; sourceTree = "<group>"; };
 		1BC33DF51F656BC7007B7ECF /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		1BC33E301F67DF2F007B7ECF /* loadDataFromBackEndAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loadDataFromBackEndAction.swift; sourceTree = "<group>"; };
+		1BC33E331F67DF53007B7ECF /* MainReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainReducer.swift; sourceTree = "<group>"; };
+		1BC33E351F67DF94007B7ECF /* ItemCellReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellReducer.swift; sourceTree = "<group>"; };
 		1BEB21BC1F62BE5D00517EFC /* SAMobileArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SAMobileArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BEB21BF1F62BE5D00517EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BEB21C11F62BE5D00517EFC /* IntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroController.swift; sourceTree = "<group>"; };
@@ -105,6 +111,14 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		1BC33E321F67DF3F007B7ECF /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				1BC33E301F67DF2F007B7ECF /* loadDataFromBackEndAction.swift */,
+			);
+			name = Action;
+			sourceTree = "<group>";
+		};
 		1BEB21B31F62BE5D00517EFC = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +152,7 @@
 		1BEB21D11F62BED000517EFC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1BC33E321F67DF3F007B7ECF /* Action */,
 				1BEB21D41F62BEFF00517EFC /* Intro */,
 				1BEB21D51F62BF0400517EFC /* Main */,
 				1BEB21DB1F62C0F600517EFC /* ItemCell */,
@@ -180,6 +195,7 @@
 			children = (
 				1BC33DAB1F62CF24007B7ECF /* MainState.swift */,
 				1BEB21D61F62BF1000517EFC /* MainController.swift */,
+				1BC33E331F67DF53007B7ECF /* MainReducer.swift */,
 				1BC33DB31F62EB61007B7ECF /* MainViewModel.swift */,
 			);
 			name = Main;
@@ -198,6 +214,7 @@
 			children = (
 				1BC33DBA1F62F1AE007B7ECF /* ItemCellState.swift */,
 				1BEB21DC1F62C10800517EFC /* ItemCell.swift */,
+				1BC33E351F67DF94007B7ECF /* ItemCellReducer.swift */,
 				1BC33DB81F62F0C0007B7ECF /* ItemCellViewModel.swift */,
 			);
 			name = ItemCell;
@@ -375,6 +392,7 @@
 				1BEB21E01F62C21D00517EFC /* FavouriteCell.swift in Sources */,
 				1BC33DF61F656BC7007B7ECF /* Store.swift in Sources */,
 				1BEB21DD1F62C10800517EFC /* ItemCell.swift in Sources */,
+				1BC33E311F67DF2F007B7ECF /* loadDataFromBackEndAction.swift in Sources */,
 				1BEB21DA1F62BF1E00517EFC /* FavouritesController.swift in Sources */,
 				1BEB21E41F62C2B800517EFC /* Request.swift in Sources */,
 				1BC33DAC1F62CF24007B7ECF /* MainState.swift in Sources */,
@@ -382,6 +400,8 @@
 				1BC33DBB1F62F1AE007B7ECF /* ItemCellState.swift in Sources */,
 				1BEB21C01F62BE5D00517EFC /* AppDelegate.swift in Sources */,
 				1BC33DB41F62EB61007B7ECF /* MainViewModel.swift in Sources */,
+				1BC33E361F67DF94007B7ECF /* ItemCellReducer.swift in Sources */,
+				1BC33E341F67DF53007B7ECF /* MainReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,21 +28,13 @@ class ItemCell: UITableViewCell {
             like.backgroundColor = viewModel.likeBgColor
             add.backgroundColor = viewModel.favBgColor
             
-            store = Store<ItemCellState>(state: ItemCellState.initial, reducer: reducer)
+            store = Store<ItemCellState>(state: ItemCellState.initial, reducer: itemCellReducer)
             store?.listen(forNewState: handle)
         }
     }
     
     override func prepareForReuse() {
         store = nil
-    }
-    
-    func reducer(_ previous: ItemCellState, _ event: Event) -> ItemCellState {
-        if event is ItemCellEvent {
-            return ItemCellState.changed
-        } else {
-            return previous
-        }
     }
     
     func handle(state st: ItemCellState) {
