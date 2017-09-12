@@ -24,18 +24,17 @@ class MainController: UIViewController {
         store = Store<MainState>(state: MainState.initial, reducer: reducer)
         store.listen(forNewState: handle)
         
-        let task = BackendTask()
-        task.execute(input: "")
+        store.dispatch(loadDataFromBackEndAction)
+    }
+    
+    func loadDataFromBackEndAction () -> Observable<Event> {
+        return BackendTask().execute(input: "")
             .toArray()
             .map { elements -> BackendEvent in
                 return BackendEvent.success(data: elements)
             }
             .catchErrorJustReturn(BackendEvent.error)
             .startWith(BackendEvent.loading)
-            .subscribe(onNext: { event in
-                self.store.dispatch(event)
-            })
-            .addDisposableTo(bag)
     }
     
     func reducer(_ previous: MainState, _ event: Event) -> MainState {
