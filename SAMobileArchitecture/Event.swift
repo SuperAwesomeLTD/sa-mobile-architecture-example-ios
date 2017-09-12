@@ -8,18 +8,15 @@
 
 import UIKit
 
-protocol Event {
-    // do nothing
+protocol Event {}
+
+struct LoadBackendDataEvent: Event {
+    var data: [BackendModel]?
+    var isLoading: Bool
 }
 
-enum BackendEvent: Event {
-    case loading
-    case success(data: [BackendModel])
-    case error
-}
-
-enum NavigationEvent: Event {
-    case goto(segue: String)
+struct NavigationEvent: Event {
+    var segue: String
 }
 
 enum ItemCellEvent: Event {

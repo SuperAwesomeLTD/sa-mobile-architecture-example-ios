@@ -21,15 +21,12 @@ class IntroController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        store.dispatch(NavigationEvent.goto(segue: "IntroToMain"))
+        store.dispatch(NavigationEvent(segue: "IntroToMain"))
     }
     
     private func reducer(_ previous: IntroState, _ event: Event) -> IntroState {
         if let event = event as? NavigationEvent {
-            switch event {
-            case .goto(let segue):
-                return IntroState.goto(segue: segue)
-            }
+            return IntroState.goto(segue: event.segue)
         } else {
             return previous
         }
