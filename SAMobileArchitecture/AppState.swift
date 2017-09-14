@@ -9,11 +9,22 @@
 import UIKit
 
 struct AppState: State {
+    var mainState: MainState
+    var introState: IntroState
+    
+    static func initial() -> AppState {
+        return AppState(mainState: MainState(data: [], isLoading: false, hasError: false),
+                        introState: IntroState(shouldNavigate: false))
+    }
+}
+
+struct IntroState: State {
+    var shouldNavigate: Bool
+}
+
+struct MainState: State {
     var data: [BackendModel]
     var isLoading: Bool
     var hasError: Bool
-    
-    static func initial () -> AppState {
-        return AppState(data: [], isLoading: false, hasError: false)
-    }
 }
+

@@ -13,22 +13,17 @@ typealias Reducer <S: State> = (S, Event) -> S
 typealias Handler <S: State> = (S) -> Void
 
 protocol HandlesStateUpdates {
-    
     func handle(_ state: State) -> Void
-    
 }
 
 class Store <S: State> {
     
     private var reducer: Reducer<S>
     private var state: S
-    private var handler: Handler<S>?
-    
-    private var handlers: [Handler<S>] = []
+
+    private var handlers: NSMutableArray = NSMutableArray()
     
     private let bag = DisposeBag()
-    
-    
     
     init(state: S, reducer: @escaping Reducer<S>) {
         self.state = state
@@ -37,9 +32,10 @@ class Store <S: State> {
     
     func dispatch(_ event: Event) {
         self.state = self.reducer(self.state, event)
-        self.handler?(self.state)
-        handlers.forEach { handler in
-            handler(self.state)
+        handlers.forEach { handl in
+            if let han = handl as? HandlesStateUpdates {
+                han.handle(self.state)
+            }
         }
     }
     
@@ -47,19 +43,19 @@ class Store <S: State> {
         let observable = action()
         observable
             .subscribe(onNext: { event in
-                self.state = self.reducer(self.state, event)
-                self.handler?(self.state)
+                self.dispatch(event)
             })
             .addDisposableTo(bag)
     }
     
-    func addListener(_ withHandler: @escaping Handler<S>) {
-        handlers.append(withHandler)
+    func addListener(_ listener: HandlesStateUpdates) {
+        handlers.add(listener)
+//        print("Number of listeners \(handlers.count)")
     }
     
-    func listen(forNewState withHandler: @escaping Handler<S>) {
-        self.handler = withHandler
-        self.handler?(self.state)
+    func removeListener(_ listener: HandlesStateUpdates) {
+        handlers.remove(listener)
+//        print("Number of listeners \(handlers.count)")
     }
 }
 

@@ -10,6 +10,8 @@ import UIKit
 
 protocol Event {}
 
+struct SkipIntroEvent: Event {}
+
 struct LoadBackendDataEvent: Event {
     var data: [BackendModel]?
     var isLoading: Bool
@@ -19,6 +21,4 @@ struct NavigationEvent: Event {
     var segue: String
 }
 
-enum ItemCellEvent: Event {
-    case changed(model: BackendModel)
-}
+struct ItemCellEvent: Event {}

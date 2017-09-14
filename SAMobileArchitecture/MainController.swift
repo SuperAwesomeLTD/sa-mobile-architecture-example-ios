@@ -13,34 +13,50 @@ class MainController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     
-    var store: Store<MainState>!
+    var store: Store<AppState>?
     
-    let bag = DisposeBag()
     let viewModel = MainViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        store = Store<MainState>(state: MainState.initial, reducer: mainReducer)
-        store.listen(forNewState: handle)
-        
-        store.dispatch(loadDataFromBackEndAction)
+        let del = UIApplication.shared.delegate as! AppDelegate
+        store = del.store
     }
     
-    func handle(state st: MainState) {
-        print("Main state :: \(st)")
-        switch st {
-        case .initial:
-            table.dataSource = viewModel
-            table.delegate = viewModel
-            break
-        case .loading:
-            break
-        case .success(let data):
-            viewModel.update(data)
-            break
-        case .error:
-            break
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        store?.addListener(self)
+        store?.dispatch(loadDataFromBackEndAction)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        store?.removeListener(self)
+    }
+}
+
+extension MainController: HandlesStateUpdates {
+    
+    func handle(_ state: State) {
+        
+        print("Main state \(state)")
+        
+        if let state = state as? AppState {
+            
+            let mState = state.mainState
+            
+            if mState.isLoading {
+                table.dataSource = viewModel
+                table.delegate = viewModel
+            }
+            else if mState.hasError {
+                print("ERROR!")
+            }
+            else {
+                viewModel.update(mState.data)
+                table.reloadData()
+            }
         }
     }
 }

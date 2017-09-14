@@ -19,7 +19,7 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var like: UIButton!
     @IBOutlet weak var add: UIButton!
     
-    var store: Store<ItemCellState>?
+    var store: Store<AppState>?
     
     var viewModel: ItemCellViewModel! {
         didSet {
@@ -28,31 +28,30 @@ class ItemCell: UITableViewCell {
             like.backgroundColor = viewModel.likeBgColor
             add.backgroundColor = viewModel.favBgColor
             
-            store = Store<ItemCellState>(state: ItemCellState.initial, reducer: itemCellReducer)
-            store?.listen(forNewState: handle)
+            let del = UIApplication.shared.delegate as! AppDelegate
+            store = del.store
+            store?.addListener(self)
         }
     }
     
     override func prepareForReuse() {
-        store = nil
-    }
-    
-    func handle(state st: ItemCellState) {
-        switch st {
-        case .initial, .changed:
-            like.backgroundColor = viewModel.likeBgColor
-            add.backgroundColor = viewModel.favBgColor
-            break
-        }
+        store?.removeListener(self)
     }
     
     @IBAction func likeAction(_ sender: Any) {
         viewModel.model.isLiked = !viewModel.model.isLiked
-        store?.dispatch(ItemCellEvent.changed(model: viewModel.model))
+        store?.dispatch(ItemCellEvent())
     }
     
     @IBAction func addAction(_ sender: Any) {
         viewModel.model.isFavourite = !viewModel.model.isFavourite
-        store?.dispatch(ItemCellEvent.changed(model: viewModel.model))
+        store?.dispatch(ItemCellEvent())
+    }
+}
+
+extension ItemCell: HandlesStateUpdates {
+    func handle(_ state: State) {
+        like.backgroundColor = viewModel.likeBgColor
+        add.backgroundColor = viewModel.favBgColor
     }
 }
