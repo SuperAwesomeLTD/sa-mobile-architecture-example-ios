@@ -31,6 +31,8 @@
 		1BEB21E81F62C2E600517EFC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB21E71F62C2E600517EFC /* Event.swift */; };
 		1BEB21EE1F62C39100517EFC /* IntroState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB21ED1F62C39100517EFC /* IntroState.swift */; };
 		1BEB21F61F62C4A900517EFC /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB21F51F62C4A900517EFC /* State.swift */; };
+		1BF0F0BC1F6A99B600D76869 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF0F0BB1F6A99B600D76869 /* AppState.swift */; };
+		1BF0F0C11F6AB94100D76869 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF0F0C01F6AB94100D76869 /* AppReducer.swift */; };
 		D386BAC5436B31F95C00FE52 /* Pods_SAMobileArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81108D22A4EF9A0B9872240 /* Pods_SAMobileArchitecture.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		1BEB21E71F62C2E600517EFC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		1BEB21ED1F62C39100517EFC /* IntroState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroState.swift; sourceTree = "<group>"; };
 		1BEB21F51F62C4A900517EFC /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		1BF0F0BB1F6A99B600D76869 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		1BF0F0C01F6AB94100D76869 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		20922A24E655ABE887305B4D /* Pods-SAMobileArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAMobileArchitecture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
 		2D229FD6ED5335989AE41F54 /* Pods-SAMobileArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAMobileArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		B81108D22A4EF9A0B9872240 /* Pods_SAMobileArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SAMobileArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +156,9 @@
 		1BEB21D11F62BED000517EFC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1BF0F0BA1F6A99AD00D76869 /* State */,
 				1BC33E321F67DF3F007B7ECF /* Action */,
+				1BF0F0BD1F6AA0E800D76869 /* Reducers */,
 				1BEB21D41F62BEFF00517EFC /* Intro */,
 				1BEB21D51F62BF0400517EFC /* Main */,
 				1BEB21DB1F62C0F600517EFC /* ItemCell */,
@@ -246,6 +252,22 @@
 				1BC33DF51F656BC7007B7ECF /* Store.swift */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		1BF0F0BA1F6A99AD00D76869 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				1BF0F0BB1F6A99B600D76869 /* AppState.swift */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+		1BF0F0BD1F6AA0E800D76869 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				1BF0F0C01F6AB94100D76869 /* AppReducer.swift */,
+			);
+			name = Reducers;
 			sourceTree = "<group>";
 		};
 		F60A8AA5E9A201F19FCCD5D1 /* Pods */ = {
@@ -385,6 +407,7 @@
 				1BEB21E81F62C2E600517EFC /* Event.swift in Sources */,
 				1BEB21C21F62BE5D00517EFC /* IntroController.swift in Sources */,
 				1BC33DA81F62CE49007B7ECF /* BackendModel.swift in Sources */,
+				1BF0F0C11F6AB94100D76869 /* AppReducer.swift in Sources */,
 				1BC33DAA1F62CE7A007B7ECF /* BackendTask.swift in Sources */,
 				1BEB21EE1F62C39100517EFC /* IntroState.swift in Sources */,
 				1BC33DB91F62F0C0007B7ECF /* ItemCellViewModel.swift in Sources */,
@@ -398,6 +421,7 @@
 				1BC33DAC1F62CF24007B7ECF /* MainState.swift in Sources */,
 				1BEB21D71F62BF1000517EFC /* MainController.swift in Sources */,
 				1BC33DBB1F62F1AE007B7ECF /* ItemCellState.swift in Sources */,
+				1BF0F0BC1F6A99B600D76869 /* AppState.swift in Sources */,
 				1BEB21C01F62BE5D00517EFC /* AppDelegate.swift in Sources */,
 				1BC33DB41F62EB61007B7ECF /* MainViewModel.swift in Sources */,
 				1BC33E361F67DF94007B7ECF /* ItemCellReducer.swift in Sources */,

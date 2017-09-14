@@ -15,8 +15,12 @@ class IntroController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        store = Store<IntroState>(state: IntroState.initial, reducer: reducer)
-        store.listen(forNewState: handle)
+        let del = UIApplication.shared.delegate as! AppDelegate
+        del.store.addListener(handle2)
+        
+//        
+//        store = Store<IntroState>(state: IntroState.initial, reducer: reducer)
+//        store.listen(forNewState: handle)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,6 +36,10 @@ class IntroController: UIViewController {
         }
     }
     
+    private func handle2(newState state: AppState) {
+        
+    }
+    
     private func handle(state st: IntroState) {
         print("Intro state :: \(st)")
         switch st {
@@ -44,3 +52,9 @@ class IntroController: UIViewController {
     }
 }
 
+extension IntroController: HandlesStateUpdates {
+    
+    func handle(_ state: State) {
+        
+    }
+}
