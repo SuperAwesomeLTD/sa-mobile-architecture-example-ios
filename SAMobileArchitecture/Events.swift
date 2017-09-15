@@ -12,6 +12,8 @@ protocol Event {}
 
 struct SkipIntroEvent: Event {}
 
+struct SetupMainController: Event {}
+
 struct LoadBackendDataEvent: Event {
     var data: [BackendModel]?
     var isLoading: Bool

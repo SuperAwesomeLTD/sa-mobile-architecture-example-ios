@@ -9,34 +9,41 @@
 import UIKit
 
 func appReducer(_ previous: AppState, _ event: Event) -> AppState {
-    return AppState(mainState: mainReducer(previous.mainState, event),
-                    introState: introReducer(previous.introState, event))
+    return AppState(introState: introReducer(previous.introState, event),
+                    mainState: mainReducer(previous.mainState, event))
 }
 
 func mainReducer(_ previous: MainState, _ event: Event) -> MainState {
-    var state = previous
+    let state = previous
     
     if let event = event as? LoadBackendDataEvent {
-        if let newData = event.data {
-            state.hasError = false
-            state.data += newData
-        } else {
-            state.hasError = true
+        
+        if event.isLoading {
+            return MainState.isLoading
         }
-        state.isLoading = event.isLoading
+        else if let newData = event.data {
+            return MainState.hasData(data: newData)
+        }
+        else {
+            return state
+        }
+        
     }
-    else if let event = event as? ItemCellEvent {
-        // do nothing
+    else if event is SetupMainController {
+        return MainState.initial
+    }
+    else if event is ItemCellEvent {
+        return MainState.changeData
     }
     
     return state
 }
 
 func introReducer(_ previous: IntroState, _ event: Event) -> IntroState {
-    var state = previous
+    let state = previous
     
     if event is SkipIntroEvent {
-        state.shouldNavigate = true
+        return IntroState.gotoMain
     }
     
     return state

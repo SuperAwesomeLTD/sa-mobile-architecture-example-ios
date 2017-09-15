@@ -27,6 +27,7 @@ class MainController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         store?.addListener(self)
+        store?.dispatch(SetupMainController())
         store?.dispatch(loadDataFromBackEndAction)
     }
     
@@ -46,16 +47,26 @@ extension MainController: HandlesStateUpdates {
             
             let mState = state.mainState
             
-            if mState.isLoading {
+            switch mState {
+            case .initial:
                 table.dataSource = viewModel
                 table.delegate = viewModel
-            }
-            else if mState.hasError {
-                print("ERROR!")
-            }
-            else {
-                viewModel.update(mState.data)
+                // 
+                break
+            case .isLoading:
+                //
+                break
+            case .hasData(let data):
+                print("RELOADING DATA")
+                viewModel.update(data)
                 table.reloadData()
+                //
+                break
+            case .changeData:
+                //
+                break
+            case .error:
+                break
             }
         }
     }

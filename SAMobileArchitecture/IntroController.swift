@@ -38,9 +38,14 @@ extension IntroController: HandlesStateUpdates {
         print("Intro state \(state)")
         
         if let state = state as? AppState {
+            let introState = state.introState
             
-            if state.introState.shouldNavigate {
+            switch introState {
+            case .initial:
+                break
+            case .gotoMain:
                 self.performSegue(withIdentifier: "IntroToMain", sender: self)
+                break
             }
         }
     }

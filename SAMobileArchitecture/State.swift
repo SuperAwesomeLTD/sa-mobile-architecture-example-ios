@@ -11,22 +11,25 @@ import UIKit
 protocol State {}
 
 struct AppState: State {
-    var mainState: MainState
     var introState: IntroState
+    var mainState: MainState
     
     static func initial() -> AppState {
-        return AppState(mainState: MainState(data: [], isLoading: false, hasError: false),
-                        introState: IntroState(shouldNavigate: false))
+        return AppState(introState: IntroState.initial,
+                        mainState: MainState.initial)
     }
 }
 
-struct IntroState: State {
-    var shouldNavigate: Bool
+enum IntroState: State {
+    case initial
+    case gotoMain
 }
 
-struct MainState: State {
-    var data: [BackendModel]
-    var isLoading: Bool
-    var hasError: Bool
+enum MainState {
+    case initial
+    case isLoading
+    case hasData(data: [BackendModel])
+    case changeData
+    case error
 }
 

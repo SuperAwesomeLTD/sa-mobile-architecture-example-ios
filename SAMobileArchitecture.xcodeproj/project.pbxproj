@@ -82,17 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				1BEB21D41F62BEFF00517EFC /* Intro */,
-				1BEB21C11F62BE5D00517EFC /* IntroController.swift */,
 				1BEB21D51F62BF0400517EFC /* Main */,
-				1BEB21D61F62BF1000517EFC /* MainController.swift */,
-				1BC33DB31F62EB61007B7ECF /* MainViewModel.swift */,
 				1BEB21DB1F62C0F600517EFC /* ItemCell */,
-				1BEB21DC1F62C10800517EFC /* ItemCell.swift */,
-				1BC33DB81F62F0C0007B7ECF /* ItemCellViewModel.swift */,
 				1BEB21D81F62BF1300517EFC /* Favourites */,
-				1BEB21D91F62BF1E00517EFC /* FavouritesController.swift */,
 				1BEB21DE1F62C21100517EFC /* FavouriteCell */,
-				1BEB21DF1F62C21D00517EFC /* FavouriteCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -194,6 +187,7 @@
 		1BEB21D41F62BEFF00517EFC /* Intro */ = {
 			isa = PBXGroup;
 			children = (
+				1BEB21C11F62BE5D00517EFC /* IntroController.swift */,
 			);
 			name = Intro;
 			sourceTree = "<group>";
@@ -201,6 +195,8 @@
 		1BEB21D51F62BF0400517EFC /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1BEB21D61F62BF1000517EFC /* MainController.swift */,
+				1BC33DB31F62EB61007B7ECF /* MainViewModel.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -208,6 +204,7 @@
 		1BEB21D81F62BF1300517EFC /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
+				1BEB21D91F62BF1E00517EFC /* FavouritesController.swift */,
 			);
 			name = Favourites;
 			sourceTree = "<group>";
@@ -215,6 +212,8 @@
 		1BEB21DB1F62C0F600517EFC /* ItemCell */ = {
 			isa = PBXGroup;
 			children = (
+				1BEB21DC1F62C10800517EFC /* ItemCell.swift */,
+				1BC33DB81F62F0C0007B7ECF /* ItemCellViewModel.swift */,
 			);
 			name = ItemCell;
 			sourceTree = "<group>";
@@ -222,6 +221,7 @@
 		1BEB21DE1F62C21100517EFC /* FavouriteCell */ = {
 			isa = PBXGroup;
 			children = (
+				1BEB21DF1F62C21D00517EFC /* FavouriteCell.swift */,
 			);
 			name = FavouriteCell;
 			sourceTree = "<group>";
