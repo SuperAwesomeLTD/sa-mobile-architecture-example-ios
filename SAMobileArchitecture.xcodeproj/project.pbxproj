@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05CABDA0E02BA8FBA80D5B6F /* Pods_SAMobileArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754DB29E323BA8427C76C4B5 /* Pods_SAMobileArchitecture.framework */; };
 		1BA0081A1F6AD9400008D563 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA008191F6AD9400008D563 /* Actions.swift */; };
 		1BC33DA81F62CE49007B7ECF /* BackendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DA71F62CE49007B7ECF /* BackendModel.swift */; };
 		1BC33DAA1F62CE7A007B7ECF /* BackendTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC33DA91F62CE7A007B7ECF /* BackendTask.swift */; };
@@ -27,7 +28,6 @@
 		1BEB21E81F62C2E600517EFC /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEB21E71F62C2E600517EFC /* Events.swift */; };
 		1BF0F0BC1F6A99B600D76869 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF0F0BB1F6A99B600D76869 /* State.swift */; };
 		1BF0F0C11F6AB94100D76869 /* Reducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF0F0C01F6AB94100D76869 /* Reducers.swift */; };
-		D386BAC5436B31F95C00FE52 /* Pods_SAMobileArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B81108D22A4EF9A0B9872240 /* Pods_SAMobileArchitecture.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,9 +53,9 @@
 		1BEB21E71F62C2E600517EFC /* Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		1BF0F0BB1F6A99B600D76869 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		1BF0F0C01F6AB94100D76869 /* Reducers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducers.swift; sourceTree = "<group>"; };
-		20922A24E655ABE887305B4D /* Pods-SAMobileArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAMobileArchitecture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
-		2D229FD6ED5335989AE41F54 /* Pods-SAMobileArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAMobileArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture.release.xcconfig"; sourceTree = "<group>"; };
-		B81108D22A4EF9A0B9872240 /* Pods_SAMobileArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SAMobileArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43C9283337CA8206515596F8 /* Pods-SAMobileArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAMobileArchitecture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
+		719DDC4AFE5900782503CB6A /* Pods-SAMobileArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SAMobileArchitecture.release.xcconfig"; path = "Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture.release.xcconfig"; sourceTree = "<group>"; };
+		754DB29E323BA8427C76C4B5 /* Pods_SAMobileArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SAMobileArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,21 +63,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D386BAC5436B31F95C00FE52 /* Pods_SAMobileArchitecture.framework in Frameworks */,
+				05CABDA0E02BA8FBA80D5B6F /* Pods_SAMobileArchitecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F58FB2A28A354C76763660E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B81108D22A4EF9A0B9872240 /* Pods_SAMobileArchitecture.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		1BA0081B1F6AEA4D0008D563 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,8 +124,8 @@
 			children = (
 				1BEB21BE1F62BE5D00517EFC /* SAMobileArchitecture */,
 				1BEB21BD1F62BE5D00517EFC /* Products */,
-				F60A8AA5E9A201F19FCCD5D1 /* Pods */,
-				0F58FB2A28A354C76763660E /* Frameworks */,
+				E7AA83392E01845A7742145A /* Pods */,
+				D8D0B9F7C058B7F105382FAD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,11 +228,19 @@
 			name = Backend;
 			sourceTree = "<group>";
 		};
-		F60A8AA5E9A201F19FCCD5D1 /* Pods */ = {
+		D8D0B9F7C058B7F105382FAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				20922A24E655ABE887305B4D /* Pods-SAMobileArchitecture.debug.xcconfig */,
-				2D229FD6ED5335989AE41F54 /* Pods-SAMobileArchitecture.release.xcconfig */,
+				754DB29E323BA8427C76C4B5 /* Pods_SAMobileArchitecture.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7AA83392E01845A7742145A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				43C9283337CA8206515596F8 /* Pods-SAMobileArchitecture.debug.xcconfig */,
+				719DDC4AFE5900782503CB6A /* Pods-SAMobileArchitecture.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -252,12 +252,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BEB21CE1F62BE5D00517EFC /* Build configuration list for PBXNativeTarget "SAMobileArchitecture" */;
 			buildPhases = (
-				70B73963A34A546C565F78D9 /* [CP] Check Pods Manifest.lock */,
+				EAFB088478A8377D6EF8046A /* [CP] Check Pods Manifest.lock */,
 				1BEB21B81F62BE5D00517EFC /* Sources */,
 				1BEB21B91F62BE5D00517EFC /* Frameworks */,
 				1BEB21BA1F62BE5D00517EFC /* Resources */,
-				D82EF4FCAAC510D286B237AA /* [CP] Embed Pods Frameworks */,
-				196AFFC8AA00EB65D6DBE552 /* [CP] Copy Pods Resources */,
+				70B535D060128C9391255C0F /* [CP] Embed Pods Frameworks */,
+				99850DFF5003AB13CD63FD1D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -317,7 +317,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		196AFFC8AA00EB65D6DBE552 /* [CP] Copy Pods Resources */ = {
+		70B535D060128C9391255C0F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99850DFF5003AB13CD63FD1D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -332,7 +347,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		70B73963A34A546C565F78D9 /* [CP] Check Pods Manifest.lock */ = {
+		EAFB088478A8377D6EF8046A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -345,21 +360,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D82EF4FCAAC510D286B237AA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SAMobileArchitecture/Pods-SAMobileArchitecture-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -508,7 +508,7 @@
 		};
 		1BEB21CF1F62BE5D00517EFC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20922A24E655ABE887305B4D /* Pods-SAMobileArchitecture.debug.xcconfig */;
+			baseConfigurationReference = 43C9283337CA8206515596F8 /* Pods-SAMobileArchitecture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DCC9L689QJ;
@@ -523,7 +523,7 @@
 		};
 		1BEB21D01F62BE5D00517EFC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D229FD6ED5335989AE41F54 /* Pods-SAMobileArchitecture.release.xcconfig */;
+			baseConfigurationReference = 719DDC4AFE5900782503CB6A /* Pods-SAMobileArchitecture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DCC9L689QJ;
