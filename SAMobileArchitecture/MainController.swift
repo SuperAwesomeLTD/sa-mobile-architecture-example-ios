@@ -13,6 +13,7 @@ class MainController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var store: Store<AppState>?
     
@@ -28,12 +29,19 @@ class MainController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         store?.addListener(self)
-        store?.dispatch(loadDataFromBackEndAction)
+        store?.dispatch (loadDataFromBackEndAction)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         store?.removeListener(self)
+    }
+}
+
+extension MainController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        store?.dispatch(SearchLocallyInDataEvent(searchfilter: searchText))
     }
 }
 

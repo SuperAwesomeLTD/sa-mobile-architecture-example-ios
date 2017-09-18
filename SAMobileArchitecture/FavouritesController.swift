@@ -44,10 +44,8 @@ extension FavouritesController: HandlesStateUpdates {
             
             tableView.dataSource = viewModel
             tableView.delegate = viewModel
-            
-            viewModel.update(mState.data.filter { model -> Bool in
-                return model.isFavourite
-            })
+
+            viewModel.update(mState.favourites)
             tableView.reloadData()
         }
     }

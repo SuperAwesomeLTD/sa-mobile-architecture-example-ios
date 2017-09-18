@@ -18,9 +18,26 @@ struct IntroState: State {
 }
 
 struct MainState: State {
-    var data: [BackendModel] = []
+    var fullData: [BackendModel] = []
     var isLoading: Bool = false
     var hasError: Bool = false
     var hasData: Bool = false
     var isChanged: Bool = false
+    var searchTerm: String?
+    
+    var data: [BackendModel] {
+        return self.fullData.filter { model -> Bool in
+            if let filter = self.searchTerm, filter != "" {
+                return model.text.lowercased().contains(filter.lowercased())
+            } else {
+                return true
+            }
+        }
+    }
+    
+    var favourites: [BackendModel] {
+        return self.fullData.filter { model -> Bool in
+            return model.isFavourite
+        }
+    }
 }

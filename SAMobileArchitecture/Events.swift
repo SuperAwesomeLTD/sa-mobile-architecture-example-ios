@@ -31,3 +31,7 @@ struct GetFavouritesEvent: Event {}
 struct DeleteFavouriteEvent: Event {
     var model: BackendModel
 }
+
+struct SearchLocallyInDataEvent: Event {
+    var searchfilter: String?
+}

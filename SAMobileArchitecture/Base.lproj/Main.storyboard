@@ -159,6 +159,9 @@ Architecture</string>
                                     <constraint firstAttribute="height" constant="44" id="LZ0-2d-WAf"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nEw-0H-9hE" id="UbO-Bg-BHs"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,6 +189,7 @@ Architecture</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="Cnh-xr-3zY" id="Nfa-BX-pzs"/>
                         <outlet property="spinner" destination="lsn-L6-2o6" id="6XX-hV-gAv"/>
                         <outlet property="table" destination="knl-eC-jiQ" id="hsz-6L-jSw"/>
                     </connections>

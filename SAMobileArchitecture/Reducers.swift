@@ -28,10 +28,15 @@ func mainReducer(_ previous: MainState, _ event: Event) -> MainState {
     
     if let event = event as? LoadBackendDataEvent {
         state.isChanged = false
-        state.data += event.data
+        state.fullData = event.data
         state.hasData = state.data.count > 0
         state.hasError = event.hasError
         state.isLoading = event.isLoading
+    }
+    else if let event = event as? SearchLocallyInDataEvent {
+        state.searchTerm = event.searchfilter
+        state.hasData = state.data.count > 0
+        state.isChanged = false
     }
     else if let event = event as? ItemCellLikeEvent {
         state.data.forEach { model in
