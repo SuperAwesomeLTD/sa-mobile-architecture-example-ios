@@ -35,7 +35,7 @@ extension IntroController: HandlesStateUpdates {
     
     func handle(_ state: State) {
         
-        print("Intro state \(state)")
+        print("Intro state ::\n\t\(state)")
         
         if let state = state as? AppState {
             let introState = state.introState

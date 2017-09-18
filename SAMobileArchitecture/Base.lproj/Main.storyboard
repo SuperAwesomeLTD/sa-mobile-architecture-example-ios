@@ -231,6 +231,9 @@ Architecture</string>
                                                 <constraint firstAttribute="bottom" secondItem="tBh-ez-pON" secondAttribute="bottom" constant="8" id="i9T-Sl-9es"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="favouritesName" destination="tBh-ez-pON" id="IUu-ev-Rye"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -243,6 +246,9 @@ Architecture</string>
                             <constraint firstItem="dis-6j-ALu" firstAttribute="top" secondItem="YZZ-X1-pZe" secondAttribute="bottom" id="lgc-Wk-9ma"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="YZZ-X1-pZe" id="N3X-bO-jyg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYt-Ev-vQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

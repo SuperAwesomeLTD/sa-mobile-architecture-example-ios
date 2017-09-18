@@ -39,15 +39,11 @@ class ItemCell: UITableViewCell {
     }
     
     @IBAction func likeAction(_ sender: Any) {
-        store?.dispatch({ () -> Observable<Event> in
-            return toggleLikeItem(forModel: self.viewModel.model)
-        })
+        store?.dispatch(ItemCellLikeEvent(model: self.viewModel.model))
     }
     
     @IBAction func addAction(_ sender: Any) {
-        store?.dispatch({ () -> Observable<Event> in
-            return toggleFavouriteItem(forModel: self.viewModel.model)
-        })
+        store?.dispatch(ItemCellFavEvent(model: self.viewModel.model))
     }
 }
 

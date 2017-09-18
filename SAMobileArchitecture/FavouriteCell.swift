@@ -12,15 +12,15 @@ class FavouriteCell: UITableViewCell {
 
     static let Identifier = "FavouriteCellId"
     
+    @IBOutlet weak var favouritesName: UILabel!
+    
+    var viewModel: FavouriteCellViewModel! {
+        didSet {
+            favouritesName.text = viewModel.cellTitle
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

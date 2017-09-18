@@ -12,8 +12,6 @@ protocol Event {}
 
 struct SkipIntroEvent: Event {}
 
-struct SetupMainControllerEvent: Event {}
-
 struct LoadBackendDataEvent: Event {
     var data: [BackendModel] = []
     var isLoading: Bool
@@ -25,5 +23,11 @@ struct ItemCellLikeEvent: Event {
 }
 
 struct ItemCellFavEvent: Event {
+    var model: BackendModel
+}
+
+struct GetFavouritesEvent: Event {}
+
+struct DeleteFavouriteEvent: Event {
     var model: BackendModel
 }

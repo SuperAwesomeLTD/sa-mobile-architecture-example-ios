@@ -18,11 +18,3 @@ func loadDataFromBackEndAction () -> Observable<Event> {
         .catchErrorJustReturn(LoadBackendDataEvent(data: [], isLoading: false, hasError: true))
         .startWith(LoadBackendDataEvent(data: [], isLoading: true, hasError: false))
 }
-
-func toggleFavouriteItem (forModel model: BackendModel) -> Observable<Event> {
-    return Observable.just(ItemCellFavEvent(model: model))
-}
-
-func toggleLikeItem (forModel model: BackendModel) -> Observable<Event> {
-    return Observable.just(ItemCellLikeEvent(model: model))
-}

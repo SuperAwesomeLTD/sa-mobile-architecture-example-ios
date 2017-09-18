@@ -28,7 +28,6 @@ class MainController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         store?.addListener(self)
-        store?.dispatch(SetupMainControllerEvent())
         store?.dispatch(loadDataFromBackEndAction)
     }
     
@@ -42,7 +41,7 @@ extension MainController: HandlesStateUpdates {
     
     func handle(_ state: State) {
         
-        print("Main state \(state)")
+        print("Main state ::\n\t\(state)")
         
         if let state = state as? AppState {
             

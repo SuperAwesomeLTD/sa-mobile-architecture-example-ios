@@ -9,8 +9,9 @@
 import UIKit
 import RxSwift
 
+protocol State {}
+
 typealias Reducer <S: State> = (S, Event) -> S
-typealias Handler <S: State> = (S) -> Void
 
 protocol HandlesStateUpdates {
     func handle(_ state: State) -> Void
@@ -19,9 +20,17 @@ protocol HandlesStateUpdates {
 class Store <S: State> {
     
     private var reducer: Reducer<S>
-    private var state: S
+    private var state: S {
+        didSet {
+            handlers.forEach { handl in
+                if let han = handl as? HandlesStateUpdates {
+                    han.handle(self.state)
+                }
+            }
+        }
+    }
 
-    private var handlers: NSMutableArray = NSMutableArray()
+    private let handlers: NSMutableArray = NSMutableArray()
     
     private let bag = DisposeBag()
     
@@ -32,11 +41,6 @@ class Store <S: State> {
     
     func dispatch(_ event: Event) {
         self.state = self.reducer(self.state, event)
-        handlers.forEach { handl in
-            if let han = handl as? HandlesStateUpdates {
-                han.handle(self.state)
-            }
-        }
     }
     
     func dispatch(_ action: () -> Observable<Event>) {
@@ -48,7 +52,7 @@ class Store <S: State> {
             .addDisposableTo(bag)
     }
     
-    func addListener(_ listener: HandlesStateUpdates) {
+    func addListener (_ listener: HandlesStateUpdates) {
         handlers.add(listener)
     }
     

@@ -33,9 +33,6 @@ func mainReducer(_ previous: MainState, _ event: Event) -> MainState {
         state.hasError = event.hasError
         state.isLoading = event.isLoading
     }
-    else if event is SetupMainControllerEvent {
-        return previous
-    }
     else if let event = event as? ItemCellLikeEvent {
         state.data.forEach { model in
             if model === event.model {
@@ -47,10 +44,21 @@ func mainReducer(_ previous: MainState, _ event: Event) -> MainState {
     else if let event = event as? ItemCellFavEvent {
         state.data.forEach { model in
             if model === event.model {
-                model.isLiked = !model.isFavourite
+                model.isFavourite = !model.isFavourite
             }
         }
         state.isChanged = true
+    }
+    else if let event = event as? DeleteFavouriteEvent {
+        state.data.forEach { model in
+            if model === event.model {
+                model.isFavourite = false
+            }
+        }
+        state.isChanged = true
+    }
+    else if event is GetFavouritesEvent {
+        return previous
     }
     
     return state

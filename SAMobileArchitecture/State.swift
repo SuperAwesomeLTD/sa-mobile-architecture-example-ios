@@ -8,23 +8,16 @@
 
 import UIKit
 
-protocol State {}
-
 struct AppState: State {
-    var introState: IntroState
-    var mainState: MainState
-    
-    static func initial() -> AppState {
-        return AppState(introState: IntroState(),
-                        mainState: MainState())
-    }
+    var introState: IntroState = IntroState()
+    var mainState: MainState = MainState()
 }
 
 struct IntroState: State {
     var shouldAdvance: Bool = false
 }
 
-struct MainState {
+struct MainState: State {
     var data: [BackendModel] = []
     var isLoading: Bool = false
     var hasError: Bool = false
