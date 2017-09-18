@@ -12,15 +12,18 @@ protocol Event {}
 
 struct SkipIntroEvent: Event {}
 
-struct SetupMainController: Event {}
+struct SetupMainControllerEvent: Event {}
 
 struct LoadBackendDataEvent: Event {
-    var data: [BackendModel]?
+    var data: [BackendModel] = []
     var isLoading: Bool
+    var hasError: Bool
 }
 
-struct NavigationEvent: Event {
-    var segue: String
+struct ItemCellLikeEvent: Event {
+    var model: BackendModel
 }
 
-struct ItemCellEvent: Event {}
+struct ItemCellFavEvent: Event {
+    var model: BackendModel
+}

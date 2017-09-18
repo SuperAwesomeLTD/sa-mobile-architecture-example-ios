@@ -50,12 +50,10 @@ class Store <S: State> {
     
     func addListener(_ listener: HandlesStateUpdates) {
         handlers.add(listener)
-//        print("Number of listeners \(handlers.count)")
     }
     
     func removeListener(_ listener: HandlesStateUpdates) {
         handlers.remove(listener)
-//        print("Number of listeners \(handlers.count)")
     }
 }
 

@@ -13,40 +13,48 @@ func appReducer(_ previous: AppState, _ event: Event) -> AppState {
                     mainState: mainReducer(previous.mainState, event))
 }
 
-func mainReducer(_ previous: MainState, _ event: Event) -> MainState {
+func introReducer(_ previous: IntroState, _ event: Event) -> IntroState {
     let state = previous
     
-    if let event = event as? LoadBackendDataEvent {
-        
-        if event.isLoading {
-            return MainState.isLoading
-        }
-        else if let newData = event.data {
-            return MainState.hasData(data: newData)
-        }
-        else {
-            return state
-        }
-        
-    }
-    else if event is SetupMainController {
-        return MainState.initial
-    }
-    else if event is ItemCellEvent {
-        return MainState.changeData
+    if event is SkipIntroEvent {
+        return IntroState(shouldAdvance: true)
     }
     
     return state
 }
 
-func introReducer(_ previous: IntroState, _ event: Event) -> IntroState {
-    let state = previous
+func mainReducer(_ previous: MainState, _ event: Event) -> MainState {
+    var state = previous
     
-    if event is SkipIntroEvent {
-        return IntroState.gotoMain
+    if let event = event as? LoadBackendDataEvent {
+        state.isChanged = false
+        state.data += event.data
+        state.hasData = state.data.count > 0
+        state.hasError = event.hasError
+        state.isLoading = event.isLoading
+    }
+    else if event is SetupMainControllerEvent {
+        return previous
+    }
+    else if let event = event as? ItemCellLikeEvent {
+        state.data.forEach { model in
+            if model === event.model {
+                model.isLiked = !model.isLiked
+            }
+        }
+        state.isChanged = true
+    }
+    else if let event = event as? ItemCellFavEvent {
+        state.data.forEach { model in
+            if model === event.model {
+                model.isLiked = !model.isFavourite
+            }
+        }
+        state.isChanged = true
     }
     
     return state
 }
+
 
 

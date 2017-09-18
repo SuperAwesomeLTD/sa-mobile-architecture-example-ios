@@ -39,18 +39,21 @@ class ItemCell: UITableViewCell {
     }
     
     @IBAction func likeAction(_ sender: Any) {
-        viewModel.model.isLiked = !viewModel.model.isLiked
-        store?.dispatch(ItemCellEvent())
+        store?.dispatch({ () -> Observable<Event> in
+            return toggleLikeItem(forModel: self.viewModel.model)
+        })
     }
     
     @IBAction func addAction(_ sender: Any) {
-        viewModel.model.isFavourite = !viewModel.model.isFavourite
-        store?.dispatch(ItemCellEvent())
+        store?.dispatch({ () -> Observable<Event> in
+            return toggleFavouriteItem(forModel: self.viewModel.model)
+        })
     }
 }
 
 extension ItemCell: HandlesStateUpdates {
     func handle(_ state: State) {
+        print("Item cell state is \(state)")
         like.backgroundColor = viewModel.likeBgColor
         add.backgroundColor = viewModel.favBgColor
     }

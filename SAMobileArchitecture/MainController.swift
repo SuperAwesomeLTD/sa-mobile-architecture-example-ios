@@ -12,6 +12,7 @@ import RxSwift
 class MainController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var store: Store<AppState>?
     
@@ -27,7 +28,7 @@ class MainController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         store?.addListener(self)
-        store?.dispatch(SetupMainController())
+        store?.dispatch(SetupMainControllerEvent())
         store?.dispatch(loadDataFromBackEndAction)
     }
     
@@ -47,27 +48,25 @@ extension MainController: HandlesStateUpdates {
             
             let mState = state.mainState
             
-            switch mState {
-            case .initial:
-                table.dataSource = viewModel
-                table.delegate = viewModel
-                // 
-                break
-            case .isLoading:
-                //
-                break
-            case .hasData(let data):
-                print("RELOADING DATA")
-                viewModel.update(data)
+            table.dataSource = viewModel
+            table.delegate = viewModel
+            
+            if mState.hasData && !mState.isChanged {
+                print("Update data!")
+                viewModel.update(mState.data)
                 table.reloadData()
-                //
-                break
-            case .changeData:
-                //
-                break
-            case .error:
-                break
             }
+            
+            if mState.hasError {
+                print("HAS ERROR")
+            }
+            
+            if mState.isLoading {
+                spinner.startAnimating()
+            } else {
+                spinner.stopAnimating()
+            }
+            
         }
     }
 }

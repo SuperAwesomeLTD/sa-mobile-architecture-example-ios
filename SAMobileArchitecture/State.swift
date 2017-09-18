@@ -15,21 +15,19 @@ struct AppState: State {
     var mainState: MainState
     
     static func initial() -> AppState {
-        return AppState(introState: IntroState.initial,
-                        mainState: MainState.initial)
+        return AppState(introState: IntroState(),
+                        mainState: MainState())
     }
 }
 
-enum IntroState: State {
-    case initial
-    case gotoMain
+struct IntroState: State {
+    var shouldAdvance: Bool = false
 }
 
-enum MainState {
-    case initial
-    case isLoading
-    case hasData(data: [BackendModel])
-    case changeData
-    case error
+struct MainState {
+    var data: [BackendModel] = []
+    var isLoading: Bool = false
+    var hasError: Bool = false
+    var hasData: Bool = false
+    var isChanged: Bool = false
 }
-

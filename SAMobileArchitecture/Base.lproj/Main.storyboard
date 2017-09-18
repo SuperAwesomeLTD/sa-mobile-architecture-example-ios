@@ -146,6 +146,13 @@ Architecture</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lsn-L6-2o6">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Ztg-Wl-QTL"/>
+                                    <constraint firstAttribute="height" constant="20" id="rgV-LI-dwN"/>
+                                </constraints>
+                            </activityIndicatorView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Cnh-xr-3zY">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <constraints>
@@ -161,9 +168,11 @@ Architecture</string>
                             <constraint firstItem="3m2-Pq-xXi" firstAttribute="top" secondItem="knl-eC-jiQ" secondAttribute="bottom" id="7XA-EE-ki5"/>
                             <constraint firstAttribute="trailing" secondItem="Cnh-xr-3zY" secondAttribute="trailing" id="A4P-RZ-975"/>
                             <constraint firstItem="Cnh-xr-3zY" firstAttribute="leading" secondItem="WNP-eP-XQY" secondAttribute="leading" id="JRr-R2-mHn"/>
+                            <constraint firstItem="lsn-L6-2o6" firstAttribute="centerX" secondItem="WNP-eP-XQY" secondAttribute="centerX" id="YpJ-Iz-CBq"/>
                             <constraint firstItem="Cnh-xr-3zY" firstAttribute="top" secondItem="t49-uH-ppX" secondAttribute="bottom" id="e0K-rM-Nd8"/>
                             <constraint firstItem="knl-eC-jiQ" firstAttribute="top" secondItem="Cnh-xr-3zY" secondAttribute="bottom" id="hvi-vO-T3j"/>
                             <constraint firstItem="knl-eC-jiQ" firstAttribute="leading" secondItem="WNP-eP-XQY" secondAttribute="leading" id="iU6-zg-kv7"/>
+                            <constraint firstItem="lsn-L6-2o6" firstAttribute="centerY" secondItem="WNP-eP-XQY" secondAttribute="centerY" id="kFx-Ma-7mh"/>
                             <constraint firstAttribute="trailing" secondItem="Cnh-xr-3zY" secondAttribute="trailing" id="lPf-bd-ZUK"/>
                             <constraint firstAttribute="trailing" secondItem="knl-eC-jiQ" secondAttribute="trailing" id="rgc-Wp-Wnw"/>
                             <constraint firstItem="Cnh-xr-3zY" firstAttribute="leading" secondItem="WNP-eP-XQY" secondAttribute="leading" id="vQp-OB-UnX"/>
@@ -177,6 +186,7 @@ Architecture</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="spinner" destination="lsn-L6-2o6" id="6XX-hV-gAv"/>
                         <outlet property="table" destination="knl-eC-jiQ" id="hsz-6L-jSw"/>
                     </connections>
                 </viewController>
